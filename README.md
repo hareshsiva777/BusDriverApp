@@ -59,7 +59,8 @@ Stored information includes:
 - Odometer
 - Synchronization Status
 
----
+---<img width="1912" height="975" alt="image" src="https://github.com/user-attachments/assets/410e7f98-127d-4f9c-85f4-a2c72d5a5a01" />
+
 
 ✅ Trip History
 
