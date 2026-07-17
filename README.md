@@ -1,6 +1,6 @@
 # 🚌 Bus Driver Android Application
 
-An offline-first Android application developed as a technical assessment for Hexon Data.
+An offline Android application developed as a technical assessment for Hexon Data.
 
 The application allows bus drivers to log in without internet connectivity, manage trips, continuously collect GPS location data, store trip information locally, and automatically synchronize completed trips when the network becomes available.
 
