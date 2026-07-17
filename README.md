@@ -1,52 +1,64 @@
 # 🚌 Bus Driver Android Application
 
-An offline Android application developed as a technical assessment for Hexon Data.
+<p align="center">
 
-The application allows bus drivers to log in without internet connectivity, manage trips, continuously collect GPS location data, store trip information locally, and automatically synchronize completed trips when the network becomes available.
+![Platform](https://img.shields.io/badge/Platform-Android-green)
+![Language](https://img.shields.io/badge/Language-Kotlin-purple)
+![UI](https://img.shields.io/badge/UI-Jetpack%20Compose-blue)
+![Architecture](https://img.shields.io/badge/Architecture-MVVM-orange)
+![Database](https://img.shields.io/badge/Database-Room-success)
+![Background](https://img.shields.io/badge/Background-WorkManager-red)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
----
+</p>
 
-# Features
+An **offline-first Android application** developed as a **Technical Assessment for Hexon Data**.
 
-✅ Offline Driver Login
-
-- Login works without internet.
-- Driver accounts are stored locally using Room Database.
-
----
-
-✅ Route Selection
-
-- View available routes.
-- Select a route before starting a journey.
-- Route information can be refreshed when online.
+The application enables bus drivers to operate without internet connectivity by storing all critical information locally and automatically synchronizing completed trips once a connection becomes available.
 
 ---
 
-✅ Journey Management
+# 📱 Features
+
+### ✅ Offline Driver Login
+
+- Login works without internet
+- Driver accounts stored locally using Room Database
+
+---
+
+### ✅ Route Selection
+
+- View available routes
+- Select a route before starting a trip
+- Refresh routes when online
+
+---
+
+### ✅ Journey Management
 
 - Journey confirmation screen
-- Slide-to-start functionality
-- Start and end trips
-- Record vehicle odometer
+- Slide-to-start journey
+- End journey
+- Odometer recording
 
 ---
 
-✅ GPS Tracking
+### ✅ GPS Tracking
 
-- Continuous GPS tracking
+- Continuous GPS collection
 - Foreground Location Service
-- Location recording while the app runs in the background
-- Live trip duration
-- Distance travelled
+- Background tracking
+- Distance calculation
 - Current speed
+- Trip duration
 - GPS sample counter
 
 ---
 
-✅ Offline Storage
+### ✅ Offline Storage
 
-All trip information is stored locally using Room Database.
+Trip information is safely stored using Room Database.
 
 Stored information includes:
 
@@ -57,81 +69,119 @@ Stored information includes:
 - GPS Locations
 - Distance
 - Odometer
-- Synchronization Status
-
----<img width="1912" height="975" alt="image" src="https://github.com/user-attachments/assets/410e7f98-127d-4f9c-85f4-a2c72d5a5a01" />
-
-
-✅ Trip History
-
-Drivers can review completed trips even without internet connectivity.
+- Sync Status
 
 ---
 
-✅ Background Synchronization
+### ✅ Trip History
 
-Synchronization is handled using Android WorkManager.
-
-Completed trips remain stored locally until synchronization succeeds.
+Drivers can review completed trips anytime, even when offline.
 
 ---
 
-# Technology Stack
+### ✅ Automatic Synchronization
 
-Language
+Completed trips remain stored locally until internet connectivity becomes available.
 
-- Kotlin
+Synchronization is automatically handled using Android WorkManager.
 
-UI
-
-- Jetpack Compose
-- Material 3
-
-Architecture
-
-- MVVM
-
-Database
-
-- Room Database
-
-Background Processing
-
-- WorkManager
-
-Location Tracking
-
-- Foreground Location Service
-- Fused Location Provider
-
-Networking
-
-- Retrofit (Mock API)
+---
+# 📸 Application Screenshots
 
 ---
 
-# Architecture
+## 🔐 Login
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/29fab3b8-5146-4cc2-81d2-20d39feb4fb8" width="300" alt="Login Screen">
+</p>
+
+---
+
+## 🏠 Dashboard
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1ca92001-3842-42f8-9403-04a818b1b124" width="300" alt="Dashboard">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/d8d9192d-5f3b-4a78-b57a-66f7b700f628" width="300" alt="Dashboard">
+</p>
+
+---
+
+## 🚌 Journey Confirmation
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8bd20f38-c532-46c3-8836-81ab9b7cfbed" width="300" alt="Journey Confirmation 1">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/0eef0abe-fd07-4c92-967d-9c12de31cac4" width="300" alt="Journey Confirmation 2">
+</p>
+---
+
+## 📍 Active Trip
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/60b63b7d-de32-4b2d-b3e2-b8f316da5135" width="300" alt="Active Trip">
+</p>
+
+---
+
+## 🛑 End Trip
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/36ea5b9b-f026-40ad-a893-55c9918174aa" width="300" alt="End Trip">
+</p>
+
+---
+
+## 📜 Trip History
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e37da150-aa8f-4e8b-9074-073b7e5f7728" width="300" alt="Synchronization Status">
+</p>
+
+# 🎥 Demonstration Video
+
+A complete walkthrough of the application has been provided with the submission.
+
+The video demonstrates:
+
+- Offline Login
+- Route Selection
+- Journey Start
+- GPS Tracking
+- Background Tracking
+- Journey Completion
+- Offline Storage
+- Automatic Synchronization
+
+---
+
+# 🏗 Architecture
 
 ```
-Presentation Layer
-│
-├── Jetpack Compose UI
-│
-├── ViewModels
-│
-├── Repository Layer
-│
-├── Room Database
-│
-└── WorkManager
-        │
-        ▼
- Mock Server
+                Jetpack Compose UI
+                        │
+                        ▼
+                 ViewModels (MVVM)
+                        │
+                        ▼
+                  Repository Layer
+                        │
+        ┌───────────────┴───────────────┐
+        ▼                               ▼
+   Room Database                 Retrofit API
+        │                               │
+        └───────────────┬───────────────┘
+                        ▼
+                 WorkManager Sync
+                        │
+                        ▼
+                  Mock Backend
 ```
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 
 ```
 app/
@@ -150,6 +200,11 @@ navigation/
 network/
 
 ui/
+├── login
+├── dashboard
+├── routes
+├── trip
+└── components
 
 viewmodel/
 
@@ -158,7 +213,22 @@ worker/
 
 ---
 
-# Demo Login Credentials
+# 🛠 Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Language | Kotlin |
+| UI | Jetpack Compose |
+| Architecture | MVVM |
+| Database | Room Database |
+| Background Tasks | WorkManager |
+| Location | Foreground Location Service |
+| Networking | Retrofit |
+| Build Tool | Gradle |
+
+---
+
+# 🔐 Demo Login
 
 | Driver ID | Password |
 |-----------|----------|
@@ -170,98 +240,97 @@ worker/
 
 ---
 
-# How to Run
+# 🚀 Getting Started
 
 ## Requirements
 
-Android Studio Hedgehog or newer
-
-Android SDK 35
-
-Gradle 8+
-
-Android Emulator or Physical Device
+- Android Studio Hedgehog or newer
+- Android SDK 35
+- Gradle 8+
+- Android Emulator or Physical Device
 
 ---
 
-## Steps
+## Installation
 
-1. Clone repository
+Clone the repository
 
-```
-git clone https://github.com/YOUR_USERNAME/BusDriverApp.git
+```bash
+git clone https://github.com/hareshsiva777/BusDriverApp.git
 ```
 
-2. Open in Android Studio
+Open using Android Studio.
 
-3. Sync Gradle
+Allow Gradle Sync.
 
-4. Run the application
-
----
-
-# Offline Storage
-
-The application follows an Offline-First architecture.
-
-Instead of requiring internet connectivity, all critical data is stored locally using Room Database.
-
-This allows drivers to:
-
-- Login offline
-- Continue trips offline
-- Store completed trips locally
-- View trip history offline
+Run the application.
 
 ---
 
-# GPS Tracking
+# 💾 Offline Storage
 
-GPS tracking is implemented using a Foreground Location Service.
+This application follows an **Offline-First Architecture**.
 
-This ensures location updates continue while:
+Critical information is stored locally using Room Database.
+
+The application continues functioning even without internet access.
+
+Offline capabilities include:
+
+- Login
+- Route selection
+- Journey management
+- GPS tracking
+- Trip history
+
+---
+
+# 📍 GPS Tracking
+
+Location updates are handled through a Foreground Location Service.
+
+Tracking continues while:
 
 - Screen is locked
-- App is minimized
+- Application is minimized
 - Driver continues travelling
 
-Collected GPS points are associated with the active trip.
+Every GPS sample is associated with the active trip.
 
 ---
 
-# Synchronization
+# 🔄 Synchronization
 
-Synchronization is handled using Android WorkManager.
+Synchronization is performed using Android WorkManager.
 
-Workflow:
-
-Driver Ends Trip
-
-↓
-
-Trip Saved in Room Database
-
-↓
-
+```
+Start Trip
+      │
+      ▼
+Collect GPS
+      │
+      ▼
+End Trip
+      │
+      ▼
+Save to Room Database
+      │
+      ▼
 Waiting for Internet
-
-↓
-
-WorkManager Executes
-
-↓
-
+      │
+      ▼
+WorkManager
+      │
+      ▼
 Mock Server
-
-↓
-
-Trip Marked Synced
+      │
+      ▼
+Mark Trip as Synced
+```
 
 ---
 
-# Permissions
-
-The application requires:
+# 🔒 Permissions
 
 - Fine Location
 - Coarse Location
@@ -271,63 +340,58 @@ The application requires:
 
 ---
 
-# Assumptions
+# 📌 Assumptions
 
-For this assessment:
+For this technical assessment:
 
 - Driver accounts are preloaded into Room Database.
-- Route data is simulated.
+- Route information is simulated.
 - Synchronization uses a mock backend.
-- GPS depends on emulator/device location.
+- GPS accuracy depends on device hardware or emulator settings.
 
 ---
 
-# Features Not Implemented
+# ⚠ Features Not Implemented
 
-Due to assessment scope:
+Due to the assessment scope:
 
-- Production authentication API
-- Real backend server
-- Push notifications
-- Google Maps visualization
-- Route optimization
-- Driver profile management
-
----
-
-# Future Improvements
-
+- Production authentication server
 - Live backend integration
-- Maps integration
-- Multiple depots
+- Maps visualization
+- Push notifications
+- Driver profile management
+- Fleet administration
+
+---
+
+# 🚀 Future Enhancements
+
+- Live server integration
+- Google Maps support
 - Driver attendance
-- Digital inspection checklist
+- Vehicle inspection checklist
+- Multi-depot support
 - Fleet management dashboard
 
 ---
 
-# Technical Highlights
+# ⭐ Technical Highlights
 
-✔ Offline-First Design
-
-✔ MVVM Architecture
-
-✔ Room Database
-
-✔ WorkManager
-
-✔ Foreground GPS Service
-
-✔ Jetpack Compose
-
-✔ Material 3
+- Offline-First Design
+- Kotlin
+- Jetpack Compose
+- MVVM Architecture
+- Room Database
+- WorkManager
+- Foreground GPS Service
+- Material 3 Design
 
 ---
 
-# Author
+# 👨‍💻 Author
 
-Hary G
+**Hary G**
 
-Technical Assessment
+Technical Assessment Submission
 
 Hexon Data
